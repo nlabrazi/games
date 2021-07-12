@@ -1,8 +1,12 @@
+import React from 'react'
+
+const Snake = () => {
+
 /***************************************
  *     Création et init du canvas      *
  ***************************************/
 
-window.onload = function(){                                               //lance la fonction quand la fenetre s'affiche
+window.onload = function() {                                               //lance la fonction quand la fenetre s'affiche
 const canvasWidth     = 900;
 const canvasHeight    = 600;
 const blockSize       = 30;
@@ -17,6 +21,7 @@ const blockSize       = 30;
     let applee;
     let score;
     let timeout;
+    let delay;
 
 
     document.addEventListener('keydown', function(e) {
@@ -81,7 +86,7 @@ function refreshCanvas(){
                     applee.setNewPosition();                              //dire --> pomme replace toi si mangé
                 } while(applee.isOnSnake(snakee));                        //replace toi si pomme pas sur le snakee
 
-                if(score % 5 == 0){
+                if(score % 5 === 0){
                   speedUp();
                 }
               }
@@ -309,3 +314,11 @@ function Apple(position){
           snakee.setDirection(newDirection);
         };
       }
+
+  return (
+    <div>
+    </div>
+  );
+};
+
+export default Snake;

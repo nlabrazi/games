@@ -20,13 +20,13 @@ h1 {
   background-color: black;
 }
 
-body {
+/*body {
   background: url("https://media.giphy.com/media/QqerLDbLb4LdK/giphy.gif") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
+}*/
 
 #allthethings {
   width:0px;
