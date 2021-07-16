@@ -2,6 +2,8 @@
 @import 'components/stage';
 @import 'components/display';
 @import 'components/start-button.css';
+
+@import url('components//navbar.css');
 @import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
 
 /* GLOBAL */

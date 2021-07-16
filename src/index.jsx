@@ -11,6 +11,7 @@ import Menu from 'components/Menu';
 
 // Pages
 import TetrisGame from 'pages/TetrisGame/';
+import TowerGame from 'pages/TowerGame/';
 import SnakeGame from 'pages/SnakeGame/';
 //import SongButton from 'components/SongButton';
 
@@ -21,6 +22,7 @@ const App = () => (
     <Switch>
       <Route path="/tetris" component={TetrisGame} />
       <Route path="/snake" component={SnakeGame} />
+      <Route path="/towerdefense" component={TowerGame} />
     </Switch>
   </Router>
   );

@@ -184,7 +184,10 @@ function drawBlock(ctx, position){
               nextPosition[1] -= 1;
               break;
               default:
-              throw("Invalid Direction");
+              throw Object.assign(
+                new Error("Invalid Direction"),
+                { code: 402 }
+              );
             }
             this.body.unshift(nextPosition);                            //permet de rajouter le nextposition à notre première place
             if (!this.ateApple)                                         //si mange une pomme
@@ -205,7 +208,10 @@ function drawBlock(ctx, position){
                 allowedDirections = ["left", "right"];
                 break;
                 default:
-                throw("Invalid Direction");
+              throw Object.assign(
+                new Error("Invalid Direction"),
+                { code: 402 }
+              );
               }
             if(allowedDirections.indexOf(newDirection) > -1){           //si la direction est permise
               this.direction = newDirection;
@@ -316,8 +322,7 @@ function Apple(position){
       }
 
   return (
-    <div>
-    </div>
+    <React.Fragment />
   );
 };
 
