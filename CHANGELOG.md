@@ -3,16 +3,14 @@
 ## v1.0.0
 
 ### Added
-- Added this changelog :)
-- Added new assets (songs)
-- Fix issue with sound on Snake
+- Added screenshot for readme
 
 ### Edited
- - Update all packages
- - Update Readme
+ - (empty)
 
 ### Removed
-- Removed Heroku storage
+- Removed Old Yarn file package
+- Removed Video of snake
 
 ### To do
  - Add Vercel Storage

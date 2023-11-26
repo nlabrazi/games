@@ -159,7 +159,7 @@ Project Link: [https://github.com/nlabrazi/games](https://github.com/nlabrazi/ga
 [license-url]: https://github.com/nlabrazi/games/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nabil-labrazi
-[product-screenshot]: src/assets/videos/snake.mp4
+[product-screenshot]: src/assets/images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [Rails.js]: https://img.shields.io/badge/rails-%23CC0000.svg?style=for-the-badge&logo=ruby-on-rails&logoColor=white
