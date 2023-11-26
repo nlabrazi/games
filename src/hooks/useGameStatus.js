@@ -5,21 +5,19 @@ export const useGameStatus = (rowsCleared) => {
   const [rows, setRows] = useState(0);
   const [level, setLevel] = useState(0);
 
-  const linePoints = [40, 100, 300, 1200];
-
   const calcScore = useCallback(() => {
     // We have score
+    const linePoints = [40, 100, 300, 1200]; // Move inside useCallback
     if (rowsCleared > 0) {
       // This is how original Tetris score is calculated (WIKIPEDIA)
-      setScore(prev => prev + linePoints[rowsCleared - 1] * (level + 1));
-      setRows(prev => prev +rowsCleared);
+      setScore((prev) => prev + linePoints[rowsCleared - 1] * (level + 1));
+      setRows((prev) => prev + rowsCleared);
     }
-  }, [level, linePoints, rowsCleared]);
+  }, [level, rowsCleared]); // Removed linePoints from dependencies
 
   useEffect(() => {
     calcScore();
   }, [calcScore, rowsCleared, score]);
 
   return [score, setScore, rows, setRows, level, setLevel];
-
 };

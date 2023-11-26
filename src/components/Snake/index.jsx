@@ -1,38 +1,63 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import pkRedSound from '../../assets/sounds/sf2_ken_theme.mp3';
 
 const Snake = () => {
+  // Déclaration des constantes en dehors de la fonction window.onload
+  const canvasWidth = 900;
+  const canvasHeight = 600;
+  const blockSize = 30;
 
-/***************************************
- *     Création et init du canvas      *
- ***************************************/
+  // Déclaration du canvas a l'exterieur pour être accessible
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  const widthInBlocks = canvasWidth / blockSize;
+  const heightInBlocks = canvasHeight / blockSize;
+  const centreX = canvasWidth / 2;
+  const centreY = canvasHeight / 2;
 
-window.onload = function() {                                               //lance la fonction quand la fenetre s'affiche
-const canvasWidth     = 900;
-const canvasHeight    = 600;
-const blockSize       = 30;
-    const canvas          = document.createElement('canvas');             //canvas --> element html5 qui permet de "dessiner"
-    const ctx             = canvas.getContext('2d');                      //context permet de dessiner dans le canvas
-    const widthInBlocks   = canvasWidth/blockSize;
-    const heightInBlocks  = canvasHeight/blockSize;
-    const centreX         = canvasWidth / 2;
-    const centreY         = canvasHeight / 2;
-    const sound           = {77:'audio'};
-    let snakee;
-    let applee;
-    let score;
-    let timeout;
-    let delay;
+  // Déclaration des variables generales
+  let snakee;
+  let applee;
+  let score;
+  let timeout;
+  let delay;
+
+  useEffect(() => {
+
+   /***************************************
+   *     Création et init du canvas      *
+   ***************************************/
+
+      function init(){
+        canvas.width                 = canvasWidth;
+        canvas.height                = canvasHeight;
+          canvas.style.border          = "30px solid gray";                 //stylecss
+          canvas.style.margin          = "50px auto";                       //stylecss
+          canvas.style.display         = "block";                           //stylecss
+          canvas.style.backgroundColor = "#ddd";                            //stylecss
+          document.body.appendChild(canvas);                                //donne nous le document entier de notre page html
+          launch();
+        }
 
 
-    document.addEventListener('keydown', function(e) {
+    // Création et ajout des éléments audio en dehors de la fonction window.onload
+    const sound = { 77: 'audio' };
+    const audioElement = document.getElementById('audio');
+    audioElement.src = pkRedSound;
+    // const audioElement = document.createElement('audio');
+    audioElement.id = 'audio';
+    // audioElement.src = 'assets/sounds/pk_red.mp3';
+    document.body.appendChild(audioElement);
+
+    document.addEventListener('keydown', function (e) {
       const soundId = sound[e.which || e.keyCode];
 
       if (soundId) {
         const elem = document.getElementById(soundId);
 
-        if ( elem.paused ) {
+        if (elem && elem.paused) {
           elem.play();
-        } else {
+        } else if (elem) {
           elem.pause();
         }
       } else {
@@ -40,19 +65,10 @@ const blockSize       = 30;
       }
     });
 
+    // Appeler la fonction init à partir de useEffect
     init();
+  },); // Le tableau de dépendances vide garantit que useEffect est appelé une seule fois après le rendu initial
 
-    function init(){
-
-      canvas.width                 = canvasWidth;
-      canvas.height                = canvasHeight;
-        canvas.style.border          = "30px solid gray";                 //stylecss
-        canvas.style.margin          = "50px auto";                       //stylecss
-        canvas.style.display         = "block";                           //stylecss
-        canvas.style.backgroundColor = "#ddd";                            //stylecss
-        document.body.appendChild(canvas);                                //donne nous le document entier de notre page html
-        launch();
-      }
 
 
 /***************************************
@@ -319,11 +335,12 @@ function Apple(position){
           }
           snakee.setDirection(newDirection);
         };
-      }
 
-  return (
-    <React.Fragment />
-  );
+        return (
+          <React.Fragment>
+            <audio id="audio" src="../assets/sounds/pk_red.mp3"></audio>
+          </React.Fragment>
+        );
 };
 
 export default Snake;
