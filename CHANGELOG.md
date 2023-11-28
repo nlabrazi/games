@@ -3,17 +3,15 @@
 ## v1.0.0
 
 ### Added
-- Added screenshot for readme
+- Added setup for Vercel
 
 ### Edited
  - (empty)
 
 ### Removed
-- Removed Old Yarn file package
-- Removed Video of snake
+- (empty)
 
 ### To do
- - Add Vercel Storage
  - Street Fighter
  - Menu bar (nagivation)
  - Home page
