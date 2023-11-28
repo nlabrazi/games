@@ -3,7 +3,8 @@
 ## v1.0.0
 
 ### Added
-- Added setup for Vercel
+- Adding Favicon
+- Adding Title
 
 ### Edited
  - (empty)
