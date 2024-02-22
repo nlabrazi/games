@@ -5,24 +5,23 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Styles
 import 'assets/css/style.css';
-
-// Components
-import Menu from 'components/Menu';
+import 'assets/css/mobile-responsive.css';
+import 'assets/css/tablet-responsive.css';
 
 // Pages
 import TetrisGame from 'pages/TetrisGame/';
 import TowerGame from 'pages/TowerGame/';
 import SnakeGame from 'pages/SnakeGame/';
-//import SongButton from 'components/SongButton';
+import Home from 'pages/Home';
 
 
 const App = () => (
   <Router>
-    <Menu />
     <Switch>
       <Route path="/tetris" component={TetrisGame} />
       <Route path="/snake" component={SnakeGame} />
       <Route path="/towerdefense" component={TowerGame} />
+      <Route path="/" component={Home} /> {/* Route par défaut pour la page d'accueil */}
     </Switch>
   </Router>
   );

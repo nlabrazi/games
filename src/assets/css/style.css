@@ -1,185 +1,104 @@
 @import 'components/cell';
 @import 'components/stage';
 @import 'components/display';
+@import 'components/navbar.css';
+@import 'components/banner.css';
+@import 'components/footer.css';
 @import 'components/start-button.css';
+@import 'components/main-section.css';
 
 @import url('components//navbar.css');
 @import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
 
 /* GLOBAL */
 
-body {
+/* shared styles section */
+
+:root {
+  /**
+ * colors
+ */
+
+ --rich-black-fogra-29_95: hsla(222, 18%, 11%, 0.95);
+ --raisin-black-1: hsl(0, 0%, 16%);
+ --raisin-black-2: hsl(236, 17%, 17%);
+ --raisin-black-3: hsl(280, 11%, 11%);
+ --raisin-black-4: hsl(280, 8%, 15%);
+ --english-violet: hsl(274, 21%, 23%);
+ --eerie-black-1: hsl(277, 25%, 10%);
+ --eerie-black-2: hsl(280, 7%, 8%);
+ --roman-silver: hsl(220, 6%, 59%);
+ --quick-silver: hsl(0, 1%, 65%);
+ --light-gray-1: hsl(0, 0%, 80%);
+ --light-gray-2: hsl(0, 2%, 82%);
+ --marigold_75: hsla(42, 99%, 46%, 0.75);
+ --xiketic_90: hsla(280, 37%, 8%, 0.9);
+ --cultured-2: hsl(0, 0%, 97%);
+ --marigold: hsl(42, 99%, 46%);
+ --platinum: hsl(0, 0%, 89%);
+ --dim-gray: hsl(0, 0%, 42%);
+ --white_15: hsla(0, 0%, 100%, 0.15);
+ --white_10: hsla(0, 0%, 100%, 0.1);
+ --xiketic: hsl(277, 25%, 10%);
+ --silver: hsl(0, 0%, 78%);
+ --white: hsl(0, 0%, 100%);
+ --jet: hsl(236, 13%, 23%);
+}
+
+body
+{
+  font-family: 'Work Sans', sans-serif;
   margin: 0;
+  padding: 0;
+}
+.section-max-width
+{
+  max-width: 80%;
+  margin: 100px auto;
+}
+img
+{
+  width: 100%;
+}
+
+.goldish-color
+{
+  background: linear-gradient(90deg, var(--marigold), var(--marigold_75));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.description-text
+{
+  color: #3C354F;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.gradient-text
+{
+  background: linear-gradient(180deg, #F948B2 0%, #8758F1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btn-banner
+{
+  display: inline-flex;
+  padding: 15px 25px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 40px;
+  background: linear-gradient(90deg, var(--marigold), var(--marigold_75));
+  color: #FFF;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  margin-right: 10px;
 }
 
 @font-face {
   font-family: 'Pixel';
   src: url('assets/fonts/Pixel-LCD-7.woff') format('woff');
-}
-
-h1 {
-  color: red;
-  background-color: black;
-}
-
-/*body {
-  background: url("https://media.giphy.com/media/QqerLDbLb4LdK/giphy.gif") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
-
-#allthethings {
-  width:0px;
-  height:0px;
-
-  border-left: 300px solid transparent;
-  border-right:300px solid transparent;
-  border-top: 300px solid transparent;
-  border-radius: px;
-  position:relative;
-  margin:auto;
-  top:5px;
-  left:2px;
-}
-
-/*
-* Design menu
-*/
-
-#lvl_rookie {
-  position:relative;
-  bottom:130px;
-  right:300px;
-  height:50px;
-  width:600px;
-  background: grey;
-  text-align:center;
-  font-size:30px;
-  background-size: 1px 300%;
-  -webkit-transition:0.5s;
-  transition:0.5s;
-  color: black;
-  font-family:shadows into light;
-
-  cursor:pointer;
-}
-
-#lvl_rookie:hover {
-  background:#7A0000;
-  color:white;
-  -webkit-transform:rotate(-1deg);
-  transform:rotate(-2deg);
-}
-
-
-#lvl_intermediate {
-  position:relative;
-  bottom:150px;
-  right:300px;
-  height:50px;
-  width:600px;
-  background: grey;
-  text-align:center;
-  font-size:30px;
-  background-size: 1px 300%;
-  -webkit-transition:0.5s;
-  transition:0.5s;
-  color: black;
-  font-family:shadows into light;
-
-  cursor:pointer;
-}
-
-#lvl_intermediate:hover {
-  background:#7A0000;
-  color:white;
-  -webkit-transform:rotate(-1deg);
-  transform:rotate(-2deg);
-}
-
-
-#lvl_expert {
-  position:relative;
-  bottom:170px;
-  right:300px;
-  height:50px;
-  width:600px;
-  background: grey;
-  text-align:center;
-  font-size:30px;
-  background-size: 1px 300%;
-  -webkit-transition:0.5s;
-  transition:0.5s;
-  color: black;
-  font-family:shadows into light;
-
-  cursor:pointer;
-}
-
-#lvl_expert:hover {
-  background:#7A0000;
-  color:white;
-  -webkit-transform:rotate(-1deg);
-  transform:rotate(-2deg);
-}
-
-
-#credits {
-
-  position:relative;
-  bottom:190px;
-  right:125px;
-  height:50px;
-  width:250px;
-  margin-top: 30px;
-  background: grey;
-  text-align:center;
-  font-size:30px;
-  background-size: 1px 300%;
-  -webkit-transition:0.5s;
-  transition:0.5s;
-  color: black;
-  font-family:shadows into light;
-
-  cursor:pointer;
-}
-
-#credits a {
-  text-decoration: none;
-  color: black;
-}
-
-#credits:hover {
-  background:#7A0000;
-  color:white;
-  -webkit-transform:rotate(-1deg);
-  transform:rotate(-2deg);
-}
-
-
-#exit {
-  position:relative;
-  bottom:210px;
-  right:125px;
-  height:50px;
-  width:250px;
-  background:red;
-  text-align:center;
-  font-size:30px;
-  background-size: 1px 300%;
-  -webkit-transition:0.5s;
-  transition:0.5s;
-  color:white;
-  font-family:shadows into light;
-
-  cursor:pointer;
-}
-
-#exit:hover {
-  background:#7A0000;
-  color:white;
-  -webkit-transform:rotate(-1deg);
-  transform:rotate(-2deg);
 }

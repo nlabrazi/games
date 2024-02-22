@@ -1,0 +1,142 @@
+/* main section starts here */
+
+/* Instant Game section */
+.play-instant-game-section
+{
+    display: flex;
+    margin-top: 100px;
+
+}
+.play-instant-text
+{
+    width: 200px;
+    margin-left: 200px;
+    margin-top: 200px;
+    margin-right: 200px;
+}
+.play-instant-text h3
+{
+    font-size: 28px;
+    font-weight: 700;
+}
+.play-instant-p
+{
+color: #534C64;
+font-size: 12px;
+font-weight: 400;
+}
+.play-instant-image-container
+{
+    width: 50%;
+}
+.cow-boy-image {
+    width: 70%;
+    margin-left: 120px;
+}
+.small-image
+{
+    width: 40%;
+    margin-top: -100px;
+}
+/* online games funny video section */
+.online-game-text
+{
+    color: #0B0223;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.grid-box-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 15px;
+    gap: 10px;
+}
+
+.grid-item {
+    position: relative;
+    cursor: pointer;
+}
+.grid-item h3 {
+    position: absolute;
+    bottom: 18%; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%) translateY(-120%);
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FF42A5 0%, #FF42A5 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.grid-item:hover .overlay {
+    opacity: 1;
+}
+.grid-item:hover div
+{
+    border-radius: 15px;
+    border: 2px solid #FF42A5;
+}
+
+.grid-item i {
+    font-size: 48px;
+    color: #fff;
+}
+
+
+/* online game section */
+
+.games-container
+{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.games-content-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+    height: 70px;
+    border-radius: 40px;
+    margin: 10px 5px;
+}
+.games-content-container:hover
+{
+    width: 198px;
+    height: 68px;
+    background: var(--linear, linear-gradient(90deg, #FF42A5 0%, #FF42A5 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 2px solid #FF42A5;
+}
+.games-content-container p
+{
+    padding: 12px 18px;
+    color: #0B0223;
+    font-size: 15px;
+    font-weight: 600;
+}
+.games-content-container img
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 40px;
+    margin-left: 8px;
+}
