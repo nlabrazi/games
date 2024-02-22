@@ -3,16 +3,19 @@
 ## v1.0.0
 
 ### Added
-- Adding Favicon
-- Adding Title
+- Adding Menu bar
+- Adding Banner
+- Adding Footer
+- Link to games + Pictures
 
 ### Edited
- - (empty)
+ - Full rework of landing page
 
 ### Removed
 - (empty)
 
 ### To do
- - Street Fighter
- - Menu bar (nagivation)
- - Home page
+ - Keep reworking UI/UX
+ - Add game Street Fighter
+ - Add game Zelda
+ - Add game Mario

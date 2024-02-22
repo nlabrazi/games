@@ -1,4 +1,52 @@
-.menu-list {
-  display: inline-flex;
-  list-style: none;
+/* navbar styles */
+nav
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-height: 130px;
+    background: #FFF;
+    box-shadow: 0px 4px 30px 0px #0000000d;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.logo-section-container
+{
+    display: flex;
+    max-height: 100%;
+}
+.logo-container
+{
+    display: flex;
+    align-items: center;
+}
+.logo-text
+{
+    color: #0B0223;
+    font-size: 2.8rem;
+    font-weight: 700;
+    padding-left: 20px;
+}
+.nav-a-tag-container a
+{
+    text-decoration: none;
+    margin-right: 20px;
+}
+.navbar-rightside-content-container
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.follow-us-div-container
+{
+    display: inline-flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 10px 15px;
+    background: #0b02231a;
+}
+.follow-us-icons
+{
+    padding-left: 13px;
 }

@@ -1,0 +1,282 @@
+
+/* Responsive layout for Tablet devices  */
+@media screen and (min-width: 577px) and (max-width: 1050px)
+{
+    /* Shared Common Styles */
+    body
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* header section styles */
+
+    /* Nav bar tablet styles */
+
+    .description-text
+    {
+       font-size: 1rem;
+    }
+
+    nav
+        {
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            flex-direction: column;
+            width: 80%;
+            justify-items: center;
+        }
+        .logo-section-container
+        {
+            display: flex;
+            align-items: center;
+        }
+        .logo-container
+        {
+
+         height: 60px;
+         width: 60px;
+        }
+        .logo-text
+        {
+            color: #0B0223;
+            font-size: 2rem;
+            font-weight: 700;
+            padding-left: 10px;
+        }
+        .navbar-rightside-content-container
+        {
+            align-items: center;
+            justify-items: center;
+            align-items: center;
+        }
+        .nav-a-tag-container
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .follow-us-div-container
+        {
+            display: inline-flex;
+            margin: 0 auto;
+            align-items: center;
+            border-radius: 8px;
+            padding: 5px 8px;
+            background: #0b02231a;
+        }
+
+
+    /* banner tablet responsive design */
+
+
+    .banner-section
+   {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 200px;
+        flex-direction: column-reverse;
+        justify-content: center;
+   }
+
+    .banner-content-container
+   {
+       width: 90%;
+       padding-left: 50px;
+       margin: 0 auto;
+       background-image: url("../images/Group14.png");
+       background-repeat: no-repeat;
+       background-size: contain;
+   }
+   .left-banner-bg
+    {
+        background-image: none;
+    }
+
+   .banner-left-side
+   {
+       max-width: 400px;
+       margin: 0 auto;
+       margin-top: 70px;
+       text-align: left;
+   }
+
+   .banner-content-heading
+   {
+       font-size: 1.9rem;
+
+   }
+
+   .text-goat
+   {
+       font-size: 2.6rem;
+   }
+   .btn-banner
+    {
+        padding: 10px 25px;
+        gap: 12px;
+        font-size: 01rem;
+        margin-right: 12px;
+    }
+
+   .banner-right-side
+   {
+       display: flex;
+       justify-items: right;
+       width: 93%;
+       margin: 0 auto;
+       margin-bottom: 50px;
+   }
+   .banner-right-side > img
+   {
+       width: 100%;
+       object-fit: cover;
+   }
+
+
+    /* online games funny video section */
+    .online-game-funny-video-section
+    {
+        text-align: center;
+    }
+    .online-game-text
+    {
+        font-size: 2.6rem;
+    }
+    .grid-box-layout
+    {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+      /* Play Instant games section */
+   .play-instant-game-section
+   {
+       display: flex;
+       margin-top: 0px;
+       flex-direction: row-reverse;
+
+   }
+   .play-instant-text
+   {
+       width: 200px;
+       margin-left: 120px;
+       margin-top: 100px;
+       margin-right: 100px;
+   }
+   .play-instant-text h3
+   {
+       font-size: 2rem;
+   }
+   .play-instant-text p
+   {
+    font-size: 1rem;
+   }
+   .play-instant-image-container
+   {
+       width: 50%;
+       margin-top: 100px;
+   }
+   .cow-boy-image {
+       width: 70%;
+   }
+   .small-image
+   {
+       width: 40%;
+       margin-top: -100px;
+       margin-left: 100px;
+   }
+
+   /* footer section styles */
+   footer
+   {
+       width: calc(100% - 160px);
+       padding-top: 50px;
+       padding: 50px 80px;
+   }
+   .footer-content-container
+   {
+       width: 100%;
+       margin: 0 auto;
+       margin-bottom: 10px;
+       text-align: center;
+   }
+   .footer-logo-container
+   {
+       display: flex;
+       justify-content: center;
+       width: calc(100% - 20%);
+   }
+
+   .footer-logo-container img
+   {
+        width: 60px;
+   }
+   .footer-logo-text
+   {
+       color: #FFF;
+       font-size: 35px;
+       font-weight: 700;
+       margin-left: 15px;
+   }
+   .footer-p-tag-container
+   {
+        display: flex;
+        width: 90%;
+        display: flex;
+        padding: 10px;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        width: 500px;
+   }
+
+   .footer-services-text
+   {
+       color: #FFF;
+       width: 60px;
+       text-align: center;
+       font-size: 10px;
+       font-weight: 600px;
+       margin-right: 5px;
+   }
+   .footer-icon-container
+   {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+   .footer-icon-container i
+   {
+       color: #FFF;
+       padding-left: 50px;
+       width: calc(100% - 20%);
+   }
+   .terms-condition
+   {
+       margin-top: 20px;
+       width: 100%;
+       flex-wrap: wrap;
+   }
+   .footer-text
+   {
+       color: #ffffff99;
+       font-size: 10px;
+       font-weight: 500;
+   }
+   .policy-text
+   {
+    width: 120px;
+   }
+   .last-part
+   {
+       margin-bottom: 20px;
+   }
+
+
+}

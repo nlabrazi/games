@@ -1,0 +1,64 @@
+/* banner section style */
+.banner-section
+{
+    width: 95%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+.banner-content-container
+{
+    width: 50%;
+}
+.left-banner-bg
+{
+    background-image: url("../../images/Group14.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.banner-left-side
+{
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 70px;
+    text-align: left;
+}
+.banner-left-side li
+{
+    list-style: none;
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+.banner-content-heading
+{
+    color: #0B0223;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+}
+
+.text-goat
+{
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 0;
+    padding-top: 0;
+}
+#btn-blue
+{
+    background: #4EC5F7;
+}
+.banner-right-side
+{
+    display: flex;
+    justify-items: right;
+    width: 45%;
+}
+.banner-right-side > img
+{
+    width: 90%;
+    object-fit: cover;
+}
