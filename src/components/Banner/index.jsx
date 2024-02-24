@@ -29,7 +29,7 @@ function Banner() {
 
             <div className="btn-container">
               <a href="https://nabil-labrazi.com" target="_blank" rel="noopener noreferrer"><button className="btn-banner">Sign in</button></a>
-              <a href="https://nabil-labrazi.com" target="_blank" rel="noopener noreferrer"><button className="btn-banner" id="btn-blue">Go Rogue</button></a>
+              <a href="https://nabil-labrazi.com" target="_blank" rel="noopener noreferrer"><button className="btn-banner" id="btn-pink">Go Rogue</button></a>
 
 
             </div>
@@ -57,7 +57,7 @@ function Banner() {
                 </div>
 
               </div>
-              <p>The famous Snake Game revisted <br /><br /><i>No Download. No Installs. Play game Instantly</i></p>
+              <p className='grid-item-text-description'>The famous Snake Game revisted</p>
             </div>
             <div>
               <div className="grid-item" onClick={() => gameClick("/towerdefense")}>
@@ -67,7 +67,7 @@ function Banner() {
                   <h3>Watch now</h3>
                 </div>
               </div>
-              <p>A funny Tower-Defense game <br /><br /><i>No Download. No Installs. Play game Instantly</i></p>
+              <p className='grid-item-text-description'>A funny Tower-Defense game</p>
             </div>
             <div>
             <div className="grid-item" onClick={() => gameClick("/tetris")}>
@@ -77,7 +77,7 @@ function Banner() {
                   <h3>Watch now</h3>
                 </div>
               </div>
-              <p>Breaking game records on Tetris like OG ! <br /><br /><i>No Download. No Installs. Play game Instantly</i></p>
+              <p className='grid-item-text-description'>Breaking game records on Tetris like OG !</p>
             </div>
             <div>
               <div className="grid-item">
@@ -87,7 +87,7 @@ function Banner() {
                   <h3>Watch now</h3>
                 </div>
               </div>
-              <p>Busted gaming on school laptop, but you are still lit.</p>
+              <p className='grid-item-text-description'>Busted gaming on school laptop, but you are still lit.</p>
             </div>
           </div>
         </section>

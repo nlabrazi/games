@@ -32,7 +32,7 @@
 }
 .banner-content-heading
 {
-    color: #0B0223;
+    color: rgb(247, 243, 238);
     font-size: 2rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -47,9 +47,9 @@
     margin-top: 0;
     padding-top: 0;
 }
-#btn-blue
+#btn-pink
 {
-    background: #4EC5F7;
+    background: #f74edb;
 }
 .banner-right-side
 {

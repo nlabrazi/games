@@ -1,15 +1,12 @@
 # Changelog
 
-## v1.0.0
+## v1.5.1
 
 ### Added
-- Adding Menu bar
-- Adding Banner
-- Adding Footer
-- Link to games + Pictures
+- Adding new banner
 
 ### Edited
- - Full rework of landing page
+ - Improving design
 
 ### Removed
 - (empty)
