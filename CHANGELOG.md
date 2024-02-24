@@ -1,12 +1,12 @@
 # Changelog
 
-## v1.5.1
+## v1.5.1.a
 
 ### Added
-- Adding new banner
+- Fix vercel error node
 
 ### Edited
- - Improving design
+ - Update Node version on package.json
 
 ### Removed
 - (empty)
