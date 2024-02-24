@@ -24,7 +24,7 @@
  --raisin-black-2: hsl(236, 17%, 17%);
  --raisin-black-3: hsl(280, 11%, 11%);
  --raisin-black-4: hsl(280, 8%, 15%);
- --english-violet: hsl(274, 21%, 23%);
+ --english-violet: hsl(224, 58%, 24%);
  --eerie-black-1: hsl(277, 25%, 10%);
  --eerie-black-2: hsl(280, 7%, 8%);
  --roman-silver: hsl(220, 6%, 59%);
@@ -70,14 +70,14 @@ img
 }
 .description-text
 {
-  color: #3C354F;
+  color: #FFF;
   text-align: center;
   font-size: 1.1rem;
   font-weight: 500;
 }
 .gradient-text
 {
-  background: linear-gradient(180deg, #F948B2 0%, #8758F1 100%);
+  background: linear-gradient(180deg, #f948f0 0%, #eef158 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
