@@ -19,11 +19,15 @@ import Stage from 'components/Stage';
 import Display from 'components/Display';
 import StartButton from 'components/StartButton';
 import SongButton from 'components/SongButton';
+import MobileControls from 'components/MobileControls';
 
 
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  // const [dropButtonPressed, setDropButtonPressed] = useState(false);
+
+
 
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
@@ -32,10 +36,14 @@ const Tetris = () => {
   //console.log('re-render');
 
   const movePlayer = dir => {
-    if (!checkCollision (player, stage, { x: dir, y: 0 })) {
+    if (!checkCollision(player, stage, { x: dir, y: 0 })) {
       updatePlayerPos({ x: dir, y: 0 });
     }
   };
+
+  function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
 
   const startGame = () => {
     console.log("START GAME");
@@ -51,13 +59,13 @@ const Tetris = () => {
 
   const drop = () => {
     // Increase level when player has cleared 10 rows (WIKIPEDIA)
-    if (rows > (level +1) * 10) {
+    if (rows > (level + 1) * 10) {
       setLevel(prev => prev + 1);
       // Also increase the speed
       setDropTime(1000 / (level + 1) + 200);
     }
 
-    if (!checkCollision (player, stage, { x: 0, y: 1 })) {
+    if (!checkCollision(player, stage, { x: 0, y: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false })
     } else {
       // Game Over
@@ -66,7 +74,7 @@ const Tetris = () => {
         setGameOver(true);
         setDropTime(null);
       }
-      updatePlayerPos({ x: 0 , y: 0, collided: true});
+      updatePlayerPos({ x: 0, y: 0, collided: true });
     }
   };
 
@@ -81,9 +89,21 @@ const Tetris = () => {
 
   const dropPlayer = () => {
     console.log("interval off");
-    setDropTime(null);
+    // setDropTime(null);
     drop();
   };
+
+    // Nouvelle fonction pour gérer l'état du bouton moveDown
+    const handleMoveDown = (isPressed) => {
+      if (isPressed) {
+        console.log("interval on");
+        setDropTime(100); // Définissez un délai court pour un mouvement continu
+      } else {
+        console.log("interval off");
+        setDropTime(1000 / (level + 1) + 200); // Rétablissez le délai normal lorsque le bouton est relâché
+      }
+    };
+
 
   const move = ({ keyCode }) => {
     if (!gameOver) {
@@ -111,23 +131,33 @@ const Tetris = () => {
       onKeyDown={e => move(e)}
       onKeyUp={keyUp}
     >
-    <StyledTetris>
-      <Stage stage={stage} />
-      <aside>
-        {gameOver ? (
-        <Display gameOver={gameOver} text="Game Over" />
-        ) : (
-        <div>
-          <Display text={`Score: ${score}`} />
-          <Display text={`Rows: ${rows}`} />
-          <Display text={`Level: ${level}`} />
-        </div>
-        )}
-        <StartButton callback={startGame} />
-        <SongButton audioPath={TetrisSong} />
-      </aside>
-    </StyledTetris>
-  </StyledTetrisWrapper>
+      <StyledTetris>
+        <Stage stage={stage} />
+        <aside>
+          {gameOver ? (
+            <Display gameOver={gameOver} text="Game Over" />
+          ) : (
+            <div>
+              <Display text={`Score: ${score}`} />
+              <Display text={`Rows: ${rows}`} />
+              <Display text={`Level: ${level}`} />
+            </div>
+          )}
+          <StartButton callback={startGame} />
+          <SongButton audioPath={TetrisSong} />
+          {isMobileDevice() && (
+            <MobileControls
+              moveLeft={() => movePlayer(-1)}
+              moveRight={() => movePlayer(1)}
+              moveDown={() => handleMoveDown(true)} // Appel de la fonction lorsque le bouton est enfoncé
+              stopMoveDown={() => handleMoveDown(false)}
+              rotate={() => playerRotate(stage, 1)}
+            />
+          )}
+
+        </aside>
+      </StyledTetris>
+    </StyledTetrisWrapper>
   );
 };
 
