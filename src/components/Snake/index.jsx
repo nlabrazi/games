@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import pkRedSound from '../../assets/sounds/sf2_ken_theme.mp3';
-import '../../assets/css/components/snake.css'; // Import du fichier CSS
+import MobileControls from 'components/MobileControls';
+import '../../assets/css/components/snake.css';
+
 
 const Snake = () => {
   // Déclaration des constantes en dehors de la fonction window.onload
@@ -26,7 +28,6 @@ const Snake = () => {
   function isMobileDevice() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
-  console.log('Device type ? ', navigator.userAgent)
 
   useEffect(() => {
 
@@ -378,12 +379,7 @@ const Snake = () => {
     <React.Fragment>
       <audio id="audio" src="../assets/sounds/pk_red.mp3"></audio>
       {isMobileDevice() && (
-      <div id="mobileControls">
-        <button id="upArrow">▲</button>
-        <button id="downArrow">▼</button>
-        <button id="leftArrow">◄</button>
-        <button id="rightArrow">►</button>
-      </div>
+        <MobileControls></MobileControls>
       )}
     </React.Fragment>
   );

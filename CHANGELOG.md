@@ -3,13 +3,13 @@
 ## v1.5.2
 
 ### Added
-- Responsive for Snake
+- Mobile/Tablet gameplay for Tetris
 
 ### Edited
- - Added mobile/tablet gameplay for Snake
+ - Create separate component mobileControls
 
 ### Removed
-- (empty)
+- Old ArrowControls component
 
 ### To do
  - Keep reworking UI/UX
