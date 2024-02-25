@@ -1,12 +1,12 @@
 # Changelog
 
-## v1.5.1.a
+## v1.5.2
 
 ### Added
-- Fix vercel error node
+- Responsive for Snake
 
 ### Edited
- - Update Node version on package.json
+ - Added mobile/tablet gameplay for Snake
 
 ### Removed
 - (empty)

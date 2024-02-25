@@ -1,0 +1,39 @@
+/* Ajouter les styles spécifiques pour les appareils mobiles et tablettes */
+@media only screen and (max-width: 768px) {
+  /* Réduire la taille de la police et de certains éléments */
+  body {
+    font-size: 16px;
+  }
+
+  /* Ajuster la taille du Tetris Wrapper pour s'adapter à l'écran */
+  .StyledTetrisWrapper {
+    border: 1px solid red;
+    height: 100vh; /* Remplacer 94vh par 100vh pour occuper tout l'écran */
+  }
+
+  /* Ajuster les styles pour le Tetris lui-même */
+  .StyledTetris {
+    flex-direction: column; /* Afficher le contenu en colonnes pour s'adapter à l'écran vertical */
+    align-items: center; /* Centrer les éléments */
+    padding: 20px; /* Réduire l'espace autour du Tetris */
+    box-sizing: border-box; /* Inclure le padding dans la largeur totale */
+  }
+
+  /* Ajuster la taille du côté droit (aside) */
+  .StyledTetris aside {
+    max-width: 100%; /* Utiliser toute la largeur disponible */
+    width: 100%; /* Utiliser toute la largeur disponible */
+  }
+
+  /* Ajuster la taille du bouton de démarrage */
+  .StyledStartButton,
+  .StyledSongButton {
+    width: 100%; /* Utiliser toute la largeur disponible */
+    margin-bottom: 10px; /* Ajouter un peu d'espace entre les boutons */
+  }
+}
+
+/* Ajouter des styles supplémentaires pour les tablettes si nécessaire */
+@media only screen and (max-width: 1024px) {
+  /* Ajouter des styles spécifiques aux tablettes si nécessaire */
+}
