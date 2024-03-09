@@ -80,7 +80,7 @@ function Banner() {
               <p className='grid-item-text-description'>Breaking game records on Tetris like OG !</p>
             </div>
             <div>
-              <div className="grid-item">
+            <div className="grid-item" onClick={() => gameClick("/streetfighter")}>
                 <img src={Rectangle7} alt="Logo" />
                 <div className="overlay">
                   <i className="fa-regular fa-circle-play"></i>

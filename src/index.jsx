@@ -12,6 +12,7 @@ import 'assets/css/tablet-responsive.css';
 import TetrisGame from 'pages/TetrisGame/';
 import TowerGame from 'pages/TowerGame/';
 import SnakeGame from 'pages/SnakeGame/';
+import StreetFighterGame from 'pages/StreetFighterGame/';
 import Home from 'pages/Home';
 
 
@@ -21,6 +22,7 @@ const App = () => (
       <Route path="/tetris" component={TetrisGame} />
       <Route path="/snake" component={SnakeGame} />
       <Route path="/towerdefense" component={TowerGame} />
+      <Route path="/streetfighter" component={StreetFighterGame} />
       <Route path="/" component={Home} /> {/* Route par défaut pour la page d'accueil */}
     </Switch>
   </Router>
