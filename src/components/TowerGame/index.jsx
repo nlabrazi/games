@@ -1,5 +1,7 @@
 import React from 'react'
 import 'assets/css/components/tower.css';
+import enemy1Image from 'assets/images/enemy1.png';
+import enemy2Image from 'assets/images/enemy2.png';
 
 const TowerGame = () => {
 
@@ -215,10 +217,10 @@ const TowerGame = () => {
     // enemies
     const enemyTypes = [];
     const enemy1 = new Image();
-    enemy1.src = 'enemy1.png';
+    enemy1.src = enemy1Image;
     enemyTypes.push(enemy1);
     const enemy2 = new Image();
-    enemy2.src = 'enemy2.png';
+    enemy2.src = enemy2Image;
     enemyTypes.push(enemy2);
 
     class Enemy {
