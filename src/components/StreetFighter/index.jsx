@@ -41,7 +41,14 @@ const StreetFighter = () => {
     let p2frameSpeed = 8
 
     let kenIdle = [{ x: 1, y: 0, w: 50, h: 100 }, { x: 50, y: 0, w: 50, h: 100 }, { x: 100, y: 0, w: 50, h: 100 }, { x: 149, y: 0, w: 50, h: 100 }]
+    let kenIdleHurtBoxes = [{ x: p1x + 21, y: p1y + 18, w: 17, h: 15 }, { x: p1x + 10, y: p1y + 31, w: 17, h: 68 }]
+    let kenIdlePushBoxes = []
+    let kenIdleHitBoxes = []
+
     let kenIdleMirror = [{ x: 1549, y: 0, w: 49, h: 100 }, { x: 1500, y: 0, w: 49, h: 100 }, { x: 1450, y: 0, w: 49, h: 100 }, { x: 1401, y: 0, w: 49, h: 100 }]
+    let kenIdleHurtBoxesMirror = []
+    let kenIdlePushBoxesMirror = []
+    let kenIdleHitBoxesMirror = []
 
     let kenWalking = [{ x: 203, y: 0, w: 46, h: 100 }, { x: 250, y: 0, w: 46, h: 100 }, { x: 299, y: 0, w: 46, h: 100 }, { x: 349, y: 0, w: 48, h: 100 }, { x: 399, y: 0, w: 48, h: 100 }]
     let kenWalkingMirror = [{ x: 1350, y: 0, w: 42, h: 100 }, { x: 1303, y: 0, w: 42, h: 100 }, { x: 1254, y: 0, w: 42, h: 100 }, { x: 1204, y: 0, w: 42, h: 100 }, { x: 1154, y: 0, w: 42, h: 100 }]
@@ -62,9 +69,16 @@ const StreetFighter = () => {
     let kenFireballMirror = [{ x: 932, y: 514, w: 52, h: 100 }, { x: 859, y: 514, w: 67, h: 100 }, { x: 788, y: 514, w: 67, h: 100 }, { x: 714, y: 514, w: 70, h: 100 }]
 
     let chunLiIdle = [{ x: 0, y: 0, w: 50, h: 112 }, { x: 53, y: 0, w: 50, h: 112 }, { x: 105, y: 0, w: 50, h: 112 }, { x: 158, y: 0, w: 50, h: 112 }]
-    let chunLiIdleMirror = [{ x: 1399, y: 0, w: 50, h: 112 }, { x: 1346, y: 0, w: 50, h: 112 }, { x: 1294, y: 0, w: 50, h: 112 }, { x: 1241, y: 0, w: 50, h: 112 }]
+    let chunLiIdleHurtBoxes = [{ x: p1x + 21, y: p1y + 18, w: 17, h: 15 }, { x: p1x + 10, y: p1y + 31, w: 17, h: 68 }]
+    let chunLiIdlePushBoxes = []
+    let chunLiIdleHitBoxes = []
 
-    let nonInterruptibleStates = [kenLMP, kenLMPMirror, kenHP, kenHPMirror, kenLMK, kenLMKMirror, kenHK, kenHKMirror, kenFireball, kenFireballMirror]
+    let chunLiIdleMirror = [{ x: 1399, y: 0, w: 50, h: 112 }, { x: 1346, y: 0, w: 50, h: 112 }, { x: 1294, y: 0, w: 50, h: 112 }, { x: 1241, y: 0, w: 50, h: 112 }]
+    let chunLiIdleHurtBoxesMirror = []
+    let chunLiIdlePushBoxesMirror = []
+    let chunLiIdleHitBoxesMirror = []
+
+    let nonInterruptibleStates = ['kenLMP', 'kenLMPMirror', 'kenHP', 'kenHPMirror', 'kenLMK', 'kenLMKMirror', 'kenHK', 'kenHKMirror', 'kenFireball', 'kenFireballMirror']
 
     let player1State = {
       state: 'kenIdle',
@@ -79,6 +93,13 @@ const StreetFighter = () => {
       autoRepeat: true,
       nextState: 'chunLiIdleMirror'
     }
+
+    let p1HurtBoxes = []
+    let p1HitBoxes = []
+    let p1PushBoxes = []
+    let p2HurtBoxes = []
+    let p2HitBoxes = []
+    let p2PushBoxes = []
 
     let lefPressed = false
     let rightPressed = false
@@ -98,6 +119,16 @@ const StreetFighter = () => {
     console.log = function () { };
     console.log(upPressed)
     console.log(downPressed)
+    console.log(kenIdlePushBoxes)
+    console.log(kenIdleHitBoxes)
+    console.log(kenIdleHurtBoxesMirror)
+    console.log(kenIdlePushBoxesMirror)
+    console.log(kenIdleHitBoxesMirror)
+    console.log(p1HurtBoxes)
+    console.log(p1HitBoxes)
+    console.log(p1PushBoxes)
+    console.log(p2HitBoxes)
+    console.log(p2PushBoxes)
 
     class Projectile {
       constructor(x, y, direction, speed, type) {
@@ -286,9 +317,15 @@ const StreetFighter = () => {
     function drawPlayer2() {
       if (player2State.state === 'chunLiIdleMirror') {
         ctx.drawImage(chunLiMirror, chunLiIdleMirror[p2Frame].x, chunLiIdleMirror[p2Frame].y, chunLiIdleMirror[p2Frame].w, chunLiIdleMirror[p2Frame].h, p2x, p2y, chunLiIdleMirror[p2Frame].w, chunLiIdleMirror[p2Frame].h)
+        p2HurtBoxes = chunLiIdleHurtBoxesMirror
+        p2HitBoxes = chunLiIdleHitBoxesMirror
+        p2PushBoxes = chunLiIdlePushBoxesMirror
       }
       if (player2State.state === 'chunLiIdle') {
         ctx.drawImage(chunLi, chunLiIdle[p2Frame].x, chunLiIdle[p2Frame].y, chunLiIdle[p2Frame].w, chunLiIdle[p2Frame].h, p2x, p2y, chunLiIdle[p2Frame].w, chunLiIdle[p2Frame].h)
+        p2HurtBoxes = chunLiIdleHurtBoxes
+        p2HitBoxes = chunLiIdleHitBoxes
+        p2PushBoxes = chunLiIdlePushBoxes
       }
       p2FrameCount++
       if (p2FrameCount % p2frameSpeed === 0) {
@@ -318,6 +355,7 @@ const StreetFighter = () => {
     }
 
     function drawProjectiles() {
+      loopP1:
       for (let i = 0; i < p1Projectiles.length; i++) {
         p1Projectiles[i].frameCounter++
         if (p1Projectiles[i].frameCounter % 5 === 0) {
@@ -331,19 +369,54 @@ const StreetFighter = () => {
           if (p1Projectiles[i].frame === 0) {
             ctx.drawImage(ken, 891, 548, 26, 27, p1Projectiles[i].x, p1Projectiles[i].y, 26, 27)
           }
-          if (p1Projectiles[i].frame === 1) {
+          else {
             ctx.drawImage(ken, 921, 548, 33, 24, p1Projectiles[i].x, p1Projectiles[i].y, 33, 24)
+          }
+          p1Projectiles[i].x += p1Projectiles[i].speed
+          for (let j = 0; j < p2HurtBoxes.length; j++) {
+            if (
+              p1Projectiles[i].x < p2HurtBoxes[j].x + p2HurtBoxes[j].w &&
+              p1Projectiles[i].x +25 > p2HurtBoxes[j].x &&
+              p1Projectiles[i].y < p2HurtBoxes[j].y + p2HurtBoxes[j].h &&
+              p1Projectiles[i].y +25 > p2HurtBoxes[j].y
+              ) {
+                p1Projectiles.splice(i, 1)
+                if (p1x < p2x) {
+
+                }
+                else {
+
+                }
+                break loopP1;
+            }
           }
         }
         if (p1Projectiles[i].dir === 'left') {
           if (p1Projectiles[i].frame === 0) {
-            ctx.drawImage(kenMirror, 644, 549, 32, 23, p1Projectiles[i].x, p1Projectiles[i].y, 32, 23)
+            ctx.drawImage(kenMirror, 644, 549, 32, 23, p1Projectiles[i].x, p1Projectiles[i].y, 26, 27)
           }
-          if (p1Projectiles[i].frame === 1) {
-            ctx.drawImage(kenMirror, 681, 548, 25, 27, p1Projectiles[i].x, p1Projectiles[i].y, 25, 27)
+          else {
+            ctx.drawImage(kenMirror, 681, 548, 25, 27, p1Projectiles[i].x, p1Projectiles[i].y, 33, 24)
+          }
+          p1Projectiles[i].x += p1Projectiles[i].speed
+          for (let j = 0; j < p2HurtBoxes.length; j++) {
+            if (
+              p1Projectiles[i].x < p2HurtBoxes[j].x + p2HurtBoxes[j].w &&
+              p1Projectiles[i].x +25 > p2HurtBoxes[j].x &&
+              p1Projectiles[i].y < p2HurtBoxes[j].y + p2HurtBoxes[j].h &&
+              p1Projectiles[i].y +25 > p2HurtBoxes[j].y
+              ) {
+                p1Projectiles.splice(i, 1)
+                if (p1x > p2x) {
+
+                }
+                else {
+
+                }
+                break loopP1;
+            }
           }
         }
-        p1Projectiles[i].x += p1Projectiles[i].speed
       }
     }
 
@@ -436,6 +509,22 @@ const StreetFighter = () => {
       }
     }
 
+    function updateBoxes() {
+      kenIdleHurtBoxes = [{ x: p1x + 21, y: p1y + 18, w: 17, h: 15 }, { x: p1x + 10, y: p1y + 31, w: 17, h: 68 }]
+      kenIdleHitBoxes = []
+      kenIdlePushBoxes = [{ x: p1x + 13, y: p1y + 26, w: 26, h: 65 }]
+      kenIdleHurtBoxesMirror = [{ x: p1x + 13, y: p1y + 18, w: 17, h: 15 }, { x: p1x + 12, y: p1y + 31, w: 20, h: 68 }]
+      kenIdleHitBoxesMirror = []
+      kenIdlePushBoxesMirror = [{ x: p1x + 11, y: p1y + 28, w: 23, h: 65 }]
+
+      chunLiIdleHurtBoxes = [{ x: p2x + 19, y: p2y + 35, w: 15, h: 16 }, { x: p2x + 10, y: p2y + 51, w: 27, h: 32 }, { x: p2x + 8, y: p2y + 86, w: 40, h: 24 }]
+      chunLiIdleHitBoxes = []
+      chunLiIdlePushBoxes = [{ x: p2x + 10, y: p2y + 51, w: 27, h: 32 }]
+      chunLiIdleHurtBoxesMirror = [{ x: p2x + 20, y: p2y + 33, w: 16, h: 17 }, { x: p2x + 23, y: p2y + 43, w: 46, h: 60 }, { x: p2x + 18, y: p2y + 78, w: 28, h: 31 }]
+      chunLiIdleHitBoxesMirror = []
+      chunLiIdlePushBoxesMirror = [{ x: p2x + 15, y: p2y + 53, w: 42, h: 55 }]
+    }
+
     function draw() {
       setTimeout(function () {
         requestAnimationFrame(draw)
@@ -446,6 +535,7 @@ const StreetFighter = () => {
         drawPlayer1()
         drawPlayer2()
         drawProjectiles()
+        updateBoxes()
       }, 1000 / fps)
     }
     draw();

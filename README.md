@@ -137,7 +137,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@Nabil71405502](https://twitter.com/Nabil71405502) - na.labrazi@gmail.com
+Twitter & E-mail - [@Nabil71405502](https://twitter.com/Nabil71405502) - na.labrazi@gmail.com
 
 Project Link: [https://github.com/nlabrazi/games](https://github.com/nlabrazi/games)
 
