@@ -4,12 +4,33 @@ import kenImage from 'assets/images/sf/ken_edited.png';
 import kenMirrorImage from 'assets/images/sf/ken_edited_flipped.png';
 import chunLiImage from 'assets/images/sf/chunli.png';
 import chunLiMirrorImage from 'assets/images/sf/chunli_mirror.png';
+import stage1Image from 'assets/images/sf/Stage1Edit.png';
+
+import soundLightAttackSound from 'assets/sounds/sf/MovesHits/SFII_38 - Light Attack.wav';
+import soundMediumAttackSound from 'assets/sounds/sf/MovesHits/SFII_39 - Medium Attack.wav';
+import soundHardAttack1Sound from 'assets/sounds/sf/MovesHits/SFII_40 - Hard Attack1.wav';
+import soundHardAttack2Sound from 'assets/sounds/sf/MovesHits/SFII_41 - Hard Attack2.wav';
+import soundStrongHitSound from 'assets/sounds/sf/MovesHits/SFII_43 - Strong Hit.wav';
+import soundJabHitSound from 'assets/sounds/sf/MovesHits/SFII_42 - Jab Hit.wav';
+import soundFireballSound from 'assets/sounds/sf/Voices/SFII_69 - RyuKen Hadouken.wav';
+import backgroundMusicStrSound from 'assets/sounds/sf/Music/11 - guile2.mp3';
 
 
 
 const StreetFighter = () => {
 
+  const audioSources = [
+    { src: soundLightAttackSound, type: 'audio/wav' },
+    { src: soundMediumAttackSound, type: 'audio/wav' },
+    { src: soundHardAttack1Sound, type: 'audio/wav' },
+    { src: soundHardAttack2Sound, type: 'audio/wav' },
+    { src: soundStrongHitSound, type: 'audio/wav' },
+    { src: soundJabHitSound, type: 'audio/wav' },
+    { src: soundFireballSound, type: 'audio/wav' }
+  ]
+
   useEffect(() => {
+
 
     let canvas = document.getElementById('myCanvas');
     let ctx = canvas.getContext('2d');
@@ -27,6 +48,16 @@ const StreetFighter = () => {
     chunLi.src = chunLiImage
     let chunLiMirror = new Image();
     chunLiMirror.src = chunLiMirrorImage
+    let stage1 = new Image();
+    stage1.src = stage1Image
+
+
+
+    let sound = new Audio();
+    let playBGMNow = false
+    let backgroundMusicStr = new Audio();
+    backgroundMusicStr.src = backgroundMusicStrSound
+    let changeMusic = true
 
     let fps = 60
     let p1x = 190
@@ -39,6 +70,12 @@ const StreetFighter = () => {
     let p2FrameCount = 0
     let p2Frame = 0
     let p2frameSpeed = 8
+    let backgroundCounter1 = 0
+    let backgroundFrame1 = 0
+    let backgroundCounter2 = 0
+    let backgroundFrame2 = 0
+    let backgroundCounter3 = 0
+    let backgroundFrame3 = 0
 
     let kenIdle = [{ x: 1, y: 0, w: 50, h: 100 }, { x: 50, y: 0, w: 50, h: 100 }, { x: 100, y: 0, w: 50, h: 100 }, { x: 149, y: 0, w: 50, h: 100 }]
     let kenIdleHurtBoxes = [{ x: p1x + 21, y: p1y + 18, w: 17, h: 15 }, { x: p1x + 10, y: p1y + 31, w: 17, h: 68 }]
@@ -78,6 +115,26 @@ const StreetFighter = () => {
     let chunLiIdlePushBoxesMirror = []
     let chunLiIdleHitBoxesMirror = []
 
+    let chunLiHitMirror = [{ x: 1326, y: 837, w: 65, h: 98 }, { x: 1395, y: 837, w: 53, h: 98 }]
+    let chunLiHitHurtBoxesMirror = []
+    let chunLiHitPushBoxesMirror = []
+    let chunLiHitHitBoxesMirror = []
+
+    let chunLiFaceHitMirror = [{ x: 1207, y: 837, w: 58, h: 98 }, { x: 1270, y: 837, w: 45, h: 98 }]
+    let chunLiFaceHitHurtBoxesMirror = []
+    let chunLiFaceHitPushBoxesMirror = []
+    let chunLiFaceHitHitBoxesMirror = []
+
+    let chunLiHit = [{ x: 4, y: 837, w: 65, h: 98 }, { x: 61, y: 837, w: 53, h: 98 }]
+    let chunLiHitHurtBoxes = []
+    let chunLiHitPushBoxes = []
+    let chunLiHitHitBoxes = []
+
+    let chunLiFaceHit = [{ x: 137, y: 837, w: 58, h: 98 }, { x: 187, y: 837, w: 45, h: 98 }]
+    let chunLiFaceHitHurtBoxes = []
+    let chunLiFaceHitPushBoxes = []
+    let chunLiFaceHitHitBoxes = []
+
     let nonInterruptibleStates = ['kenLMP', 'kenLMPMirror', 'kenHP', 'kenHPMirror', 'kenLMK', 'kenLMKMirror', 'kenHK', 'kenHKMirror', 'kenFireball', 'kenFireballMirror']
 
     let player1State = {
@@ -94,9 +151,9 @@ const StreetFighter = () => {
       nextState: 'chunLiIdleMirror'
     }
 
-    let p1HurtBoxes = []
-    let p1HitBoxes = []
-    let p1PushBoxes = []
+    // let p1HurtBoxes = []
+    // let p1HitBoxes = []
+    // let p1PushBoxes = []
     let p2HurtBoxes = []
     let p2HitBoxes = []
     let p2PushBoxes = []
@@ -116,20 +173,6 @@ const StreetFighter = () => {
     let p1Projectiles = []
     let canFire = true
 
-    console.log = function () { };
-    console.log(upPressed)
-    console.log(downPressed)
-    console.log(kenIdlePushBoxes)
-    console.log(kenIdleHitBoxes)
-    console.log(kenIdleHurtBoxesMirror)
-    console.log(kenIdlePushBoxesMirror)
-    console.log(kenIdleHitBoxesMirror)
-    console.log(p1HurtBoxes)
-    console.log(p1HitBoxes)
-    console.log(p1PushBoxes)
-    console.log(p2HitBoxes)
-    console.log(p2PushBoxes)
-
     class Projectile {
       constructor(x, y, direction, speed, type) {
         this.x = x;
@@ -140,6 +183,20 @@ const StreetFighter = () => {
         this.frame = 0;
         this.frameCounter = 0;
       }
+    }
+
+    function playSound(source) {
+      let sound2 = new Audio();
+      sound2.volume = 1.0
+      sound2.src = source
+      sound.play()
+    }
+
+    function playBackgroundMusic(source) {
+      // sound.pause()
+      sound.volume = .5
+      sound.src = source
+      sound.play()
     }
 
     function keyDownHandler(e) {
@@ -169,6 +226,7 @@ const StreetFighter = () => {
           canFire = true
         }
       }
+      playBGMNow = true
     }
 
     function keyUpHandler(e) {
@@ -320,12 +378,44 @@ const StreetFighter = () => {
         p2HurtBoxes = chunLiIdleHurtBoxesMirror
         p2HitBoxes = chunLiIdleHitBoxesMirror
         p2PushBoxes = chunLiIdlePushBoxesMirror
-      }
-      if (player2State.state === 'chunLiIdle') {
+      } else if (player2State.state === 'chunLiIdle') {
         ctx.drawImage(chunLi, chunLiIdle[p2Frame].x, chunLiIdle[p2Frame].y, chunLiIdle[p2Frame].w, chunLiIdle[p2Frame].h, p2x, p2y, chunLiIdle[p2Frame].w, chunLiIdle[p2Frame].h)
         p2HurtBoxes = chunLiIdleHurtBoxes
         p2HitBoxes = chunLiIdleHitBoxes
         p2PushBoxes = chunLiIdlePushBoxes
+      } else if (player2State.state === 'chunLiHitMirror') {
+        ctx.drawImage(chunLiMirror, chunLiHitMirror[p2Frame].x, chunLiHitMirror[p2Frame].y, chunLiHitMirror[p2Frame].w, chunLiHitMirror[p2Frame].h, p2x, p2y + 14, chunLiHitMirror[p2Frame].w, chunLiHitMirror[p2Frame].h)
+        p2HurtBoxes = chunLiHitHurtBoxesMirror
+        p2HitBoxes = chunLiHitHitBoxesMirror
+        p2PushBoxes = chunLiHitPushBoxesMirror
+        if (p2x < 470) {
+          p2x += 2
+        }
+      } else if (player2State.state === 'chunLiFaceHitMirror') {
+        ctx.drawImage(chunLiMirror, chunLiFaceHitMirror[p2Frame].x, chunLiFaceHitMirror[p2Frame].y, chunLiFaceHitMirror[p2Frame].w, chunLiFaceHitMirror[p2Frame].h, p2x, p2y + 14, chunLiFaceHitMirror[p2Frame].w, chunLiFaceHitMirror[p2Frame].h)
+        p2HurtBoxes = chunLiFaceHitHurtBoxesMirror
+        p2HitBoxes = chunLiFaceHitHitBoxesMirror
+        p2PushBoxes = chunLiFaceHitPushBoxesMirror
+        if (p2x < 470) {
+          p2x += 2
+        }
+      }
+      else if (player2State.state === 'chunLiHit') {
+        ctx.drawImage(chunLi, chunLiHit[p2Frame].x, chunLiHit[p2Frame].y, chunLiHit[p2Frame].w, chunLiHit[p2Frame].h, p2x, p2y + 14, chunLiHit[p2Frame].w, chunLiHit[p2Frame].h)
+        p2HurtBoxes = chunLiHitHurtBoxes
+        p2HitBoxes = chunLiHitHitBoxes
+        p2PushBoxes = chunLiHitPushBoxes
+        if (p2x > -2) {
+          p2x += 2
+        }
+      } else if (player2State.state === 'chunLiFaceHit') {
+        ctx.drawImage(chunLi, chunLiFaceHit[p2Frame].x, chunLiFaceHit[p2Frame].y, chunLiFaceHit[p2Frame].w, chunLiFaceHit[p2Frame].h, p2x, p2y + 14, chunLiFaceHit[p2Frame].w, chunLiFaceHit[p2Frame].h)
+        p2HurtBoxes = chunLiFaceHitHurtBoxes
+        p2HitBoxes = chunLiFaceHitHitBoxes
+        p2PushBoxes = chunLiFaceHitPushBoxes
+        if (p2x > -2) {
+          p2x += 2
+        }
       }
       p2FrameCount++
       if (p2FrameCount % p2frameSpeed === 0) {
@@ -376,18 +466,27 @@ const StreetFighter = () => {
           for (let j = 0; j < p2HurtBoxes.length; j++) {
             if (
               p1Projectiles[i].x < p2HurtBoxes[j].x + p2HurtBoxes[j].w &&
-              p1Projectiles[i].x +25 > p2HurtBoxes[j].x &&
+              p1Projectiles[i].x + 25 > p2HurtBoxes[j].x &&
               p1Projectiles[i].y < p2HurtBoxes[j].y + p2HurtBoxes[j].h &&
-              p1Projectiles[i].y +25 > p2HurtBoxes[j].y
-              ) {
-                p1Projectiles.splice(i, 1)
-                if (p1x < p2x) {
-
+              p1Projectiles[i].y + 25 > p2HurtBoxes[j].y
+            ) {
+              p1Projectiles.splice(i, 1)
+              // playSound(soundStrongHitSound)
+              if (p1x < p2x) {
+                if (j === 0) {
+                  player2State = { state: 'chunLiFaceHitMirror', frames: 2, autoRepeat: false, nextState: 'chunLiIdleMirror' }
+                  p2Frame = 0
+                  p2FrameCount = 0
+                } else {
+                  player2State = { state: 'chunLiHitMirror', frames: 2, autoRepeat: false, nextState: 'chunLiIdleMirror' }
+                  p2Frame = 0
+                  p2FrameCount = 0
                 }
-                else {
+              }
+              else {
 
-                }
-                break loopP1;
+              }
+              break loopP1;
             }
           }
         }
@@ -402,18 +501,27 @@ const StreetFighter = () => {
           for (let j = 0; j < p2HurtBoxes.length; j++) {
             if (
               p1Projectiles[i].x < p2HurtBoxes[j].x + p2HurtBoxes[j].w &&
-              p1Projectiles[i].x +25 > p2HurtBoxes[j].x &&
+              p1Projectiles[i].x + 25 > p2HurtBoxes[j].x &&
               p1Projectiles[i].y < p2HurtBoxes[j].y + p2HurtBoxes[j].h &&
-              p1Projectiles[i].y +25 > p2HurtBoxes[j].y
-              ) {
-                p1Projectiles.splice(i, 1)
-                if (p1x > p2x) {
-
+              p1Projectiles[i].y + 25 > p2HurtBoxes[j].y
+            ) {
+              p1Projectiles.splice(i, 1) // to remove ?
+              // playSound(soundStrongHitSound)
+              if (p1x > p2x) {
+                if (j === 0) {
+                  player2State = { state: 'chunLiFaceHit', frames: 2, autoRepeat: false, nextState: 'chunLiIdle' }
+                  p2Frame = 0
+                  p2FrameCount = 0
+                } else {
+                  player2State = { state: 'chunLiHit', frames: 2, autoRepeat: false, nextState: 'chunLiIdle' }
+                  p2Frame = 0
+                  p2FrameCount = 0
                 }
-                else {
+              }
+              else {
 
-                }
-                break loopP1;
+              }
+              break loopP1;
             }
           }
         }
@@ -444,6 +552,11 @@ const StreetFighter = () => {
           }
         }
       } else if ((lowP || medP) && !nonInterruptibleStates.includes(player1State.state)) {
+        if (lowP) {
+          // playSound(soundLightAttackSound)
+        } else {
+          // playSound(soundMediumAttackSound)
+        }
         lowP = false
         medP = false
         if (p1x > p2x) {
@@ -453,6 +566,12 @@ const StreetFighter = () => {
         }
         p1Frame = 0
       } else if (highP && !nonInterruptibleStates.includes(player1State.state)) {
+        let chance = Math.floor(Math.random() * 2)
+        if (chance === 0) {
+          // playSound(soundHardAttack1Sound)
+        } else {
+          // playSound(soundHardAttack2Sound)
+        }
         highP = false
         if (p1x > p2x) {
           player1State = { state: 'kenHPMirror', frames: 5, autoRepeat: false, nextState: 'kenIdleMirror' }
@@ -461,6 +580,11 @@ const StreetFighter = () => {
         }
         p1Frame = 0
       } else if ((lowK || medK) && !nonInterruptibleStates.includes(player1State.state)) {
+        if (lowK) {
+          // playSound(soundLightAttackSound)
+        } else {
+          // playSound(soundMediumAttackSound)
+        }
         lowK = false
         medK = false
         if (p1x > p2x) {
@@ -470,6 +594,12 @@ const StreetFighter = () => {
         }
         p1Frame = 0
       } else if (highK && !nonInterruptibleStates.includes(player1State.state)) {
+        let chance = Math.floor(Math.random() * 2)
+        if (chance === 0) {
+          // playSound(soundHardAttack1Sound)
+        } else {
+          // playSound(soundHardAttack2Sound)
+        }
         highK = false
         if (p1x > p2x) {
           player1State = { state: 'kenHKMirror', frames: 5, autoRepeat: false, nextState: 'kenIdleMirror' }
@@ -478,6 +608,7 @@ const StreetFighter = () => {
         }
         p1Frame = 0
       } else if (fireball && !nonInterruptibleStates.includes(player1State.state)) {
+        // playSound(soundFireballSound)
         fireball = false
         if (player1State.state === 'kenIdleMirror') {
           player1State = { state: 'kenFireballMirror', frames: 4, autoRepeat: false, nextState: 'kenIdleMirror' }
@@ -525,13 +656,60 @@ const StreetFighter = () => {
       chunLiIdlePushBoxesMirror = [{ x: p2x + 15, y: p2y + 53, w: 42, h: 55 }]
     }
 
+    function drawBackground() {
+      backgroundCounter1++
+      if (backgroundCounter1 % 25 === 0) {
+        backgroundFrame1++
+        if (backgroundFrame1 > 1) {
+          backgroundFrame1 = 0
+        }
+      }
+      backgroundCounter2++
+      if (backgroundCounter2 % 32 === 0) {
+        backgroundFrame2++
+        if (backgroundFrame2 > 1) {
+          backgroundFrame2 = 0
+        }
+      }
+      backgroundCounter3++
+      if (backgroundCounter3 % 37 === 0) {
+        backgroundFrame3++
+        if (backgroundFrame3 > 1) {
+          backgroundFrame3 = 0
+        }
+      }
+      ctx.drawImage(stage1, 0, 0, 512, 224, 0, 0, 512, 224)
+      if (backgroundFrame1 === 0) {
+        ctx.drawImage(stage1, 19, 401, 44, 61, 100, 120, 44, 61)
+        ctx.drawImage(stage1, 32, 376, 6, 23, 112, 98, 6, 23)
+        ctx.drawImage(stage1, 39, 367, 18, 39, 118, 90, 18, 39)
+      } else if (backgroundFrame1 === 1) {
+        ctx.drawImage(stage1, 19, 401, 44, 61, 100, 120, 44, 61)
+        ctx.drawImage(stage1, 32, 376, 6, 23, 112, 98, 6, 23)
+        ctx.drawImage(stage1, 105, 367, 18, 39, 118, 90, 18, 39)
+      } if (backgroundFrame2 === 0) {
+        ctx.drawImage(stage1, 140, 392, 96, 70, 250, 110, 96, 70)
+      } else if (backgroundFrame2 === 1) {
+        ctx.drawImage(stage1, 243, 392, 96, 70, 250, 110, 96, 70)
+      } if (backgroundFrame3 === 0) {
+        ctx.drawImage(stage1, 347, 384, 79, 78, 400, 110, 79, 78)
+      } else if (backgroundFrame3 === 1) {
+        ctx.drawImage(stage1, 432, 384, 79, 78, 400, 110, 79, 78)
+      }
+    }
+
     function draw() {
       setTimeout(function () {
         requestAnimationFrame(draw)
         ctx.fillStyle = 'rgb(80, 152, 216)'
-        // ctx.fillRect(0, 0, 512, 254)
+        // ctx.fillRect(0, 0, 800, 600)
         ctx.fillRect(0, 0, 512, 224)
+        if (playBGMNow && changeMusic) {
+          changeMusic = false
+          playBackgroundMusic(backgroundMusicStr)
+        }
         controls()
+        drawBackground()
         drawPlayer1()
         drawPlayer2()
         drawProjectiles()
@@ -543,7 +721,16 @@ const StreetFighter = () => {
   }, []);
 
   return (
-    <React.Fragment />
+    <>
+      <div>
+        {audioSources.map((source, index) => (
+          <div key={index}>
+            <source src={source.src} type={source.type} />
+          </div>
+        ))}
+      </div>
+      <React.Fragment />
+    </>
   );
 };
 

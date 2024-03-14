@@ -2,6 +2,7 @@ import React from 'react';
 import 'assets/css/components/banner.css';
 
 import Group18 from "assets/images/Group18.png"
+//import Group18 from "assets/images/Group18.webp"
 import rectangle_snake from "assets/images/rectangle_snake.png"
 import rectangle_tetris from "assets/images/rectangle_tetris.png"
 import Rectangle5 from "assets/images/Rectangle5.png"

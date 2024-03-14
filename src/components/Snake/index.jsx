@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import pkRedSound from '../../assets/sounds/sf2_ken_theme.mp3';
+import pkRedSound from '../../assets/sounds/sf2_guile_theme.mp3';
 import MobileControls from 'components/MobileControls';
 import '../../assets/css/components/snake.css';
 
