@@ -471,7 +471,7 @@ const StreetFighter = () => {
               p1Projectiles[i].y + 25 > p2HurtBoxes[j].y
             ) {
               p1Projectiles.splice(i, 1)
-              playSound(soundStrongHitSound)
+              // playSound(soundStrongHitSound)
               if (p1x < p2x) {
                 if (j === 0) {
                   player2State = { state: 'chunLiFaceHitMirror', frames: 2, autoRepeat: false, nextState: 'chunLiIdleMirror' }
@@ -506,7 +506,7 @@ const StreetFighter = () => {
               p1Projectiles[i].y + 25 > p2HurtBoxes[j].y
             ) {
               p1Projectiles.splice(i, 1) // to remove ?
-              playSound(soundStrongHitSound)
+              // playSound(soundStrongHitSound)
               if (p1x > p2x) {
                 if (j === 0) {
                   player2State = { state: 'chunLiFaceHit', frames: 2, autoRepeat: false, nextState: 'chunLiIdle' }
@@ -553,9 +553,9 @@ const StreetFighter = () => {
         }
       } else if ((lowP || medP) && !nonInterruptibleStates.includes(player1State.state)) {
         if (lowP) {
-          playSound(soundLightAttackSound)
+          // playSound(soundLightAttackSound)
         } else {
-          playSound(soundMediumAttackSound)
+          // playSound(soundMediumAttackSound)
         }
         lowP = false
         medP = false
@@ -568,9 +568,9 @@ const StreetFighter = () => {
       } else if (highP && !nonInterruptibleStates.includes(player1State.state)) {
         let chance = Math.floor(Math.random() * 2)
         if (chance === 0) {
-          playSound(soundHardAttack1Sound)
+          // playSound(soundHardAttack1Sound)
         } else {
-          playSound(soundHardAttack2Sound)
+          // playSound(soundHardAttack2Sound)
         }
         highP = false
         if (p1x > p2x) {
@@ -581,9 +581,9 @@ const StreetFighter = () => {
         p1Frame = 0
       } else if ((lowK || medK) && !nonInterruptibleStates.includes(player1State.state)) {
         if (lowK) {
-          playSound(soundLightAttackSound)
+          // playSound(soundLightAttackSound)
         } else {
-          playSound(soundMediumAttackSound)
+          // playSound(soundMediumAttackSound)
         }
         lowK = false
         medK = false
@@ -596,9 +596,9 @@ const StreetFighter = () => {
       } else if (highK && !nonInterruptibleStates.includes(player1State.state)) {
         let chance = Math.floor(Math.random() * 2)
         if (chance === 0) {
-          playSound(soundHardAttack1Sound)
+          // playSound(soundHardAttack1Sound)
         } else {
-          playSound(soundHardAttack2Sound)
+          // playSound(soundHardAttack2Sound)
         }
         highK = false
         if (p1x > p2x) {
@@ -608,7 +608,7 @@ const StreetFighter = () => {
         }
         p1Frame = 0
       } else if (fireball && !nonInterruptibleStates.includes(player1State.state)) {
-        playSound(soundFireballSound)
+        // playSound(soundFireballSound)
         fireball = false
         if (player1State.state === 'kenIdleMirror') {
           player1State = { state: 'kenFireballMirror', frames: 4, autoRepeat: false, nextState: 'kenIdleMirror' }
