@@ -15,6 +15,7 @@ import soundJabHitSound from 'assets/sounds/sf/MovesHits/SFII_42 - Jab Hit.wav';
 import soundFireballSound from 'assets/sounds/sf/Voices/SFII_69 - RyuKen Hadouken.wav';
 import backgroundMusicStrSound from 'assets/sounds/sf/Music/11 - guile2.mp3';
 
+
 const StreetFighter = () => {
 
   const audioSources = [
@@ -48,7 +49,7 @@ const StreetFighter = () => {
     let stage1 = new Image();
     stage1.src = stage1Image
 
-    // let sound = new Audio();
+    let sound = new Audio();
     let playBGMNow = false
     let backgroundMusicStr = new Audio();
     backgroundMusicStr.src = backgroundMusicStrSound
@@ -184,23 +185,14 @@ const StreetFighter = () => {
       let sound2 = new Audio();
       sound2.volume = 1.0
       sound2.src = source
-      sound2.play()
+      sound.play()
     }
 
     function playBackgroundMusic(source) {
-      backgroundMusicStr.pause()
-      backgroundMusicStr.volume = .5
-      backgroundMusicStr.src = source
-      backgroundMusicStr.oncanplaythrough = () => {
-        console.log(
-          "can be play",
-        );
-        backgroundMusicStr.play().then(() => {
-          console.log("Musique de fond jouée avec succès");
-        }).catch((error) => {
-          console.error("Erreur lors de la lecture de la musique de fond :", error);
-        });
-      };
+      // sound.pause()
+      sound.volume = .5
+      sound.src = source
+      sound.play()
     }
 
     function keyDownHandler(e) {
@@ -706,7 +698,9 @@ const StreetFighter = () => {
       setTimeout(function () {
         requestAnimationFrame(draw)
         ctx.fillStyle = 'rgb(80, 152, 216)'
-        ctx.fillRect(0, 0, 512, 224)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ken.draw(ctx);
+        chunLi.draw(ctx);
         if (playBGMNow && changeMusic) {
           changeMusic = false
           playBackgroundMusic(backgroundMusicStr)
@@ -725,15 +719,12 @@ const StreetFighter = () => {
 
   return (
     <div>
-
+      <audio controls>
+        {audioSources.map((source, index) => (
+          <source key={index} src={source.src} type={source.type} />
+        ))}
+      </audio>
     </div>
-    // <div>
-    //   <audio controls>
-    //     {audioSources.map((source, index) => (
-    //       <source key={index} src={source.src} type={source.type} />
-    //     ))}
-    //   </audio>
-    // </div>
   );
 };
 
